@@ -1,0 +1,1653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Sonic Journey through Imaginative Realms (2025-2028)</title>
+    <style>
+        /* Reset and Base Styles */
+        :root {
+            --primary-bg: #0a071a; /* Deep space blue/purple */
+            --secondary-bg: #1a143a; /* Slightly lighter purple for cards */
+            --text-color: #f0f0f0; /* Increased lightness for better contrast */
+            --header-text: #ffffff;
+            --accent-color1: #68d8d6; /* Teal/Cyan */
+            --accent-color2: #ff69b4; /* Hot Pink / Magenta for highlights */
+            --accent-color3: #f0e68c; /* Khaki/Soft Gold for special tags */
+            --focus-outline-color: var(--accent-color1);
+            --font-body: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --font-heading: 'Orbitron', sans-serif;
+            --border-radius: 8px;
+            --card-shadow: 0 5px 15px rgba(0,0,0,0.4);
+            --line-length-readable: 65ch; /* For readable text blocks */
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--primary-bg);
+            color: var(--text-color);
+            line-height: 1.7;
+            font-size: 16px;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            background: linear-gradient(45deg, #0a071a, #100c28, #1a0a28, #0a071a);
+            background-size: 400% 400%;
+            animation: gradientBG 25s ease infinite;
+            will-change: background-position; /* Performance hint */
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Skip Link */
+        .skip-link {
+            position: absolute;
+            top: -100px; /* Further off-screen */
+            left: 10px;
+            padding: 10px 15px;
+            background: var(--accent-color1);
+            color: var(--primary-bg);
+            text-decoration: none;
+            font-weight: bold;
+            z-index: 10000; /* Above sticky nav */
+            transition: top 0.3s ease-in-out;
+            border-radius: 0 0 var(--border-radius) var(--border-radius);
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Container */
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .readable-content {
+            max-width: var(--line-length-readable);
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+
+        /* Header */
+        .site-header {
+            text-align: center;
+            padding: 40px 20px 30px;
+            background-color: rgba(10, 7, 26, 0.6); /* Slightly more opaque */
+            border-bottom: 2px solid var(--accent-color1);
+        }
+        .site-header h1 {
+            font-family: var(--font-heading);
+            font-size: 2.8em;
+            color: var(--header-text);
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px var(--accent-color1), 0 0 20px var(--accent-color1);
+        }
+        .site-header .subtitle {
+            font-size: 1.2em;
+            color: var(--accent-color1);
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        .site-header .author-byline {
+            font-size: 1em;
+            color: var(--text-color);
+        }
+
+        /* Navigation */
+        nav#main-navigation { /* ID for ARIA */
+            background-color: rgba(26, 20, 58, 0.9); /* More opaque */
+            padding: 15px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            border-bottom: 1px solid var(--accent-color1);
+        }
+        nav#main-navigation ul { list-style: none; }
+        nav#main-navigation ul li { display: inline-block; margin: 0 15px; }
+        nav#main-navigation ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: bold;
+            padding: 8px 12px;
+            border-radius: var(--border-radius);
+            transition: background-color 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+        }
+        nav#main-navigation ul li a:hover, 
+        nav#main-navigation ul li a:focus, /* Added focus state */
+        nav#main-navigation ul li a.active {
+            background-color: var(--accent-color1);
+            color: var(--primary-bg);
+            text-shadow: 0 0 5px var(--primary-bg);
+            outline: 2px solid transparent; /* Remove default, rely on bg for focus */
+        }
+        /* Specific focus style for keyboard navigation if not overriding outline too much */
+        nav#main-navigation ul li a:focus-visible {
+            outline: 2px dashed var(--focus-outline-color);
+            outline-offset: 2px;
+        }
+
+        /* Dropdown for Years */
+        .dropdown { position: relative; display: inline-block; }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: var(--secondary-bg);
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+            z-index: 1;
+            border-radius: var(--border-radius);
+            border: 1px solid var(--accent-color1);
+        }
+        .dropdown-content a {
+            color: var(--text-color);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            font-size: 1em;
+        }
+        .dropdown-content a:hover, .dropdown-content a:focus {
+            background-color: var(--accent-color1);
+            color: var(--primary-bg);
+        }
+        .dropdown:hover .dropdown-content,
+        .dropdown .dropbtn:focus + .dropdown-content, /* Show on focus */
+        .dropdown-content:hover /* Keep open while interacting with content */
+         {
+            display: block;
+        }
+        .dropbtn {
+            font-weight: bold;
+            padding: 8px 12px;
+            border-radius: var(--border-radius);
+            transition: background-color 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+            cursor: pointer;
+            border: none; /* If it's a button-like a */
+            background: none; /* if it's a button-like a */
+            color: var(--text-color); /* if it's a button-like a */
+            font-size: 1.1em; /* Match other nav links */
+        }
+         .dropbtn:hover, .dropbtn:focus { /* Added focus state */
+            background-color: var(--accent-color1);
+            color: var(--primary-bg);
+            text-shadow: 0 0 5px var(--primary-bg);
+            outline: 2px solid transparent;
+        }
+
+
+        /* Section Styles */
+        section {
+            padding: 60px 0; /* Increased padding */
+            border-bottom: 1px dashed var(--accent-color2);
+        }
+        section:last-of-type { border-bottom: none; } /* Corrected to last-of-type for sections */
+
+        section h2 {
+            font-family: var(--font-heading);
+            font-size: 2.2em; /* Slightly larger for section titles */
+            color: var(--accent-color1);
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        section h2::after {
+            content: ''; display: block; width: 80px; height: 3px;
+            background-color: var(--accent-color2);
+            margin: 10px auto 0; border-radius: 2px;
+        }
+
+        /* Intro and Philosophy Sections */
+        .intro-philosophy-content {
+            background-color: rgba(26, 20, 58, 0.75); /* Slightly more opaque for contrast */
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            margin-bottom: 20px;
+        }
+        .intro-philosophy-content h3 {
+            color: var(--accent-color2);
+            font-family: var(--font-heading);
+            font-size: 1.6em;
+            margin-top: 25px; margin-bottom: 15px;
+        }
+        .intro-philosophy-content h3:first-child { margin-top: 0; }
+        .intro-philosophy-content ul { list-style: none; padding-left: 0; }
+        .intro-philosophy-content li {
+            margin-bottom: 10px; padding-left: 25px; position: relative;
+        }
+        .intro-philosophy-content li::before {
+            content: "✧"; position: absolute; left: 0;
+            color: var(--accent-color1); font-size: 1.3em; line-height: 1;
+        }
+        /* Deeper nested list for Pacing and Balance */
+        .intro-philosophy-content ul ul {
+            padding-left: 20px;
+            margin-top: 8px;
+        }
+        .intro-philosophy-content ul ul li::before {
+            content: "▹"; /* Different bullet for nested */
+        }
+
+
+        /* Key/Legend Styles */
+        .key-container { margin-top: 20px; }
+        .key-item {
+            display: inline-block; margin: 5px 10px 5px 0; padding: 6px 12px;
+            border-radius: var(--border-radius); font-weight: bold;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .key-ga { background-color: var(--accent-color3); color: #333; /* Darker text on gold */ }
+        .key-mc { background-color: var(--accent-color1); color: var(--primary-bg); }
+        .key-pc { background-color: var(--accent-color2); color: var(--header-text); }
+
+        /* Listening Plan - Phase Styles */
+        .phase {
+            background-color: var(--secondary-bg);
+            padding: 30px; margin-bottom: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            border-left: 6px solid var(--accent-color1);
+        }
+        .phase-header {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 25px; flex-wrap: wrap;
+        }
+        .phase-header div h3 { /* Grouping title and date */
+            font-family: var(--font-heading); font-size: 1.9em;
+            color: var(--accent-color2); margin-bottom: 5px;
+        }
+        .phase-date {
+            font-style: italic; color: var(--accent-color1);
+            font-size: 1em; display: block; /* Ensure it's on its own line if needed */
+        }
+        .toggle-theme-btn {
+            background-color: transparent; color: var(--accent-color1);
+            border: 1px solid var(--accent-color1); padding: 10px 15px;
+            border-radius: var(--border-radius); cursor: pointer;
+            font-size: 0.95em; transition: background-color 0.3s ease, color 0.3s ease;
+            font-family: var(--font-heading); margin-left: 15px;
+        }
+        .toggle-theme-btn:hover, .toggle-theme-btn:focus {
+            background-color: var(--accent-color1); color: var(--primary-bg);
+            outline: 2px solid transparent;
+        }
+        .thematic-trace {
+            background-color: rgba(10, 7, 26, 0.8);
+            padding: 25px; margin-top: 20px; margin-bottom: 25px;
+            border-radius: var(--border-radius);
+            border: 1px dashed var(--accent-color2);
+            display: none; /* Hidden by default */
+        }
+        .thematic-trace h4 {
+            color: var(--accent-color1); font-size: 1.4em; margin-bottom: 15px;
+        }
+        .thematic-trace p, .thematic-trace li {
+            font-size: 1em; color: #ddd; /* Lightened for trace block */
+            margin-bottom: 10px;
+        }
+        .thematic-trace ul { padding-left: 20px; list-style-type: none; } /* Ensure list style is consistent or styled via ::before */
+        .thematic-trace li { padding-left: 15px; position: relative; }
+        .thematic-trace li::before {
+            content: "▹"; position: absolute; left: -5px; top: 1px; /* Adjusted for alignment */
+            color: var(--accent-color2); font-size: 1.1em;
+        }
+
+
+        /* Listening Plan - Event Block (now article) */
+        .event-block { /* Was article, changing to div for simplicity, but article is good semantically */
+            margin-bottom: 30px; padding: 25px;
+            background-color: rgba(10, 7, 26, 0.4); /* More subtle inner bg */
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--accent-color2);
+        }
+        .event-block:last-child { margin-bottom: 0; }
+        .event-block-date {
+            font-weight: bold; color: var(--accent-color1);
+            font-size: 1.15em; margin-bottom: 12px; display: block;
+        }
+        .event-block h4 { /* Book Titles or Event name */
+            font-size: 1.35em; color: var(--header-text); margin-bottom: 8px;
+        }
+        .event-block h4 .audio-tag {
+            font-size: 0.7em; font-weight: normal; padding: 4px 8px;
+            border-radius: 4px; margin-left: 10px; vertical-align: middle;
+            text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .tag-ga { background-color: var(--accent-color3); color: #333; }
+        .tag-mc { background-color: var(--accent-color1); color: var(--primary-bg); }
+        .tag-pc { background-color: var(--accent-color2); color: var(--header-text); }
+
+        .event-details p { margin-bottom: 10px; font-size: 1em; }
+        .event-details strong { color: var(--accent-color1); }
+        
+
+        /* Footer */
+        footer.site-footer { /* Added specificity */
+            text-align: center; padding: 40px 20px;
+            background-color: rgba(10, 7, 26, 0.8);
+            border-top: 2px solid var(--accent-color1); margin-top: 50px;
+        }
+        footer.site-footer p { margin: 0; color: var(--accent-color2); font-style: italic; }
+
+        /* Back to Top Button */
+        #back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--accent-color1);
+            color: var(--primary-bg);
+            border: none;
+            border-radius: var(--border-radius);
+            padding: 12px 15px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+            z-index: 1000;
+            transform: translateY(20px);
+        }
+        #back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        #back-to-top:hover, #back-to-top:focus {
+            background-color: var(--accent-color2);
+            color: var(--header-text);
+            outline: 2px solid transparent;
+        }
+        
+        /* General Focus visible style for accessibility */
+        *:focus-visible {
+            outline: 3px dashed var(--focus-outline-color) !important; /* Important to override others */
+            outline-offset: 2px;
+        }
+
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .site-header h1 { font-size: 2em; }
+            .site-header .subtitle { font-size: 1em; }
+            nav#main-navigation ul li { display: block; margin: 10px 0; }
+            .dropdown { display: block; }
+            .dropdown-content { position: static; box-shadow: none; border: none; background-color: transparent;}
+            .dropdown-content a { padding-left: 30px; }
+            .phase-header { flex-direction: column; align-items: flex-start; }
+            .phase-header div h3 { margin-bottom: 10px; } /* Ensure h3 itself has margin */
+            .toggle-theme-btn { margin-left: 0; margin-top: 15px; width: 100%; text-align: center; }
+            section h2 { font-size: 1.9em; }
+            .phase-header div h3 { font-size: 1.6em; } /* Phase title on mobile */
+            .event-block h4 { font-size: 1.2em; }
+            .container { width: 95%; }
+            .intro-philosophy-content ul ul { padding-left: 10px; } /* Less indent on mobile for nested list */
+        }
+        @media (max-width: 480px) {
+            .site-header h1 { font-size: 1.8em; }
+            nav#main-navigation ul li a, .dropbtn { font-size: 1em; padding: 6px 10px;}
+            .intro-philosophy-content { padding: 20px; }
+            .phase { padding: 20px; }
+            .phase-header div h3 { font-size: 1.4em; }
+            .event-block { padding: 15px; }
+            .event-block h4 { font-size: 1.1em; }
+             #back-to-top { padding: 10px 12px; font-size: 1em;}
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background-color: #fff;
+                color: #000;
+                font-size: 12pt;
+            }
+            body::before { display: none; } /* Hide animated background */
+            .skip-link, nav#main-navigation, #back-to-top, .toggle-theme-btn, footer.site-footer { /* Specific footer */
+                display: none !important;
+            }
+            .container, section, .phase, .event-block, .intro-philosophy-content {
+                width: 100% !important;
+                max-width: none !important;
+                padding: 10px 0 !important;
+                margin: 10px 0 !important;
+                box-shadow: none !important;
+                border: 1px solid #ccc !important;
+            }
+            .phase { border-left: 3px solid #000 !important; }
+            .event-block { border-left: 2px solid #333 !important; }
+            .site-header { border-bottom: 2px solid #000 !important; background: none;}
+            .site-header h1, .site-header .subtitle, .site-header .author-byline {
+                color: #000 !important; text-shadow: none !important;
+            }
+            section h2, .phase-header div h3, .phase-date, .event-block-date, .event-details strong, .thematic-trace h4  {
+                color: #000 !important;
+            }
+             section h2::after { background-color: #000 !important; }
+            .key-item { border: 1px solid #000; }
+            .key-ga, .key-mc, .key-pc { background-color: #eee !important; color: #000 !important;}
+            .audio-tag { background-color: #eee !important; color: #000 !important; border: 1px solid #999;}
+
+            .thematic-trace {
+                display: block !important; /* Show all themes */
+                border: 1px dashed #666 !important;
+                background-color: #f9f9f9 !important;
+            }
+            .thematic-trace p, .thematic-trace li { color: #333 !important; }
+            a { text-decoration: underline; color: #0000ff; } /* Make links visible */
+            p, li {orphans: 3; widows: 3;} /* Prevent orphans and widows */
+            h2, h3, h4 { page-break-after: avoid; } /* Avoid breaking after headings */
+        }
+
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="site-header">
+        <div class="container">
+            <h1>A Sonic Journey through Imaginative Realms</h1>
+            <p class="subtitle">Thematic Listening Odyssey (2025-2028)</p>
+            <p class="author-byline">Curated by Ebony Rose</p>
+        </div>
+    </header>
+
+    <nav id="main-navigation" aria-label="Main Navigation">
+        <ul>
+            <li><a href="#intro">Introduction</a></li>
+            <li><a href="#philosophy">Design Philosophy</a></li>
+            <li class="dropdown">
+                <button class="dropbtn" aria-haspopup="true" aria-expanded="false">The Odyssey (by Year) ▼</button>
+                <div class="dropdown-content">
+                    <a href="#year-2025">2025</a>
+                    <a href="#year-2026">2026</a>
+                    <a href="#year-2027">2027</a>
+                    <a href="#year-2028">2028</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <main id="main-content">
+        <section id="intro" class="intro-philosophy-content readable-content">
+            <h2>Welcome to the Journey</h2>
+            <p>Welcome to a transformative, multi-year auditory journey through the expansive landscapes of contemporary speculative fiction. This curated audiobook experience is not just a collection of stories—it's a purposeful exploration, highlighting diverse voices, probing urgent societal issues, and celebrating storytelling’s unique capacity to illuminate our understanding and fuel visionary possibilities.</p>
+
+            <h3>Centering Diverse Voices: Why These Stories Matter</h3>
+            <p>At its core, this playlist amplifies the voices of Black, Latinx, Indigenous, and other marginalized authors. Far from peripheral, these narratives offer essential insights forged through distinct cultural histories and lived realities often marginalized by mainstream literature. Through their work, we gain profound explorations of:</p>
+            <ul>
+                <li>Identity and Belonging: Journeys through worlds that challenge, erase, or demand conformity.</li>
+                <li>Justice and Resistance: Narratives confronting systemic oppression, colonial legacies, and liberation struggles.</li>
+                <li>Community and Kinship: Stories woven with themes of found family, ancestral bonds, and collective resilience.</li>
+                <li>Reimagined Pasts and New Futures: Bold visions in Afrofuturism, Indigenous Futurism, and culturally-specific speculative fiction that break free from Eurocentric frameworks.</li>
+            </ul>
+            <p>Authors such as Octavia E. Butler, N.K. Jemisin, Silvia Moreno-Garcia, and Rebecca Roanhorse illuminate our understanding with narratives that enrich our grasp of humanity through authentic diversity in perspective, form, and imagination.</p>
+
+            <h3>Reflecting Our Times: The Relevance of Speculative Fiction</h3>
+            <p>Speculative fiction—spanning science fiction, fantasy, horror, and beyond—acts as a crucial mirror, reflecting and critiquing contemporary realities. In today's climate of political tension, historical reckoning, environmental crisis, and fractured truth, these narratives become indispensable. This playlist prioritizes works addressing contemporary urgencies:</p>
+            <ul>
+                <li>Sociopolitical Insight: Titles that dissect power dynamics, systemic inequality, and authoritarianism, offering compelling frameworks to navigate our complex society.</li>
+                <li>Ecological and Climate Consciousness: From Solarpunk’s optimistic visions to cli-fi’s cautionary tales, these stories engage deeply with ecological threats and humanity's role in fostering sustainable futures.</li>
+                <li>Resilience, Hope, and Reality: These audiobooks explore human resilience, community strength, resistance, and occasionally, the sobering realities of despair—resonating powerfully with educational leaders dedicated to cultivating engagement and empowerment among Black and Latinx communities.</li>
+            </ul>
+
+            <h3>Speculative Stories as Critical Pedagogy</h3>
+            <p>For educators and advocates of critical pedagogy, these audiobooks are potent tools. They foster critical thought, challenge dominant narratives, enhance empathy, and prompt necessary conversations around equity, justice, and envisioning equitable futures.</p>
+        </section>
+
+        <section id="philosophy" class="intro-philosophy-content readable-content">
+            <h2>Designing Your Listening Experience</h2>
+            <h3>Intentional Curation</h3>
+            <p>This multi-year listening roadmap is crafted to provide an enriching, balanced, and dynamic auditory experience:</p>
+            <ul>
+                <li>Thematic Cohesion & Genre Blending: Selections are thoughtfully grouped around Afrofuturism, Solarpunk, Horror, and Sociopolitical Speculative Fiction, highlighting intersections and creative dialogues among these genres.</li>
+                <li>Series Deep Dives & Author Spotlights: Embracing the "series binge" strategy, listeners can immerse deeply in key authors’ worlds, appreciating their narrative depth and thematic consistency.</li>
+                <li>Pacing and Balance:
+                    <ul>
+                        <li>Weekly Target: Tailored around a flexible 15-25 hour weekly listening window.</li>
+                        <li>Palate Cleansers (PC): Shorter or lighter works strategically placed to refresh and prevent listening fatigue.</li>
+                        <li>Multicast & GraphicAudio Experiences: Integrated for richer, cinematic auditory immersion.</li>
+                        <li>Seasonal Sensitivity: Subtle alignment with seasonal moods—expansive world-building in summer, introspective or atmospheric works in fall and winter, and hopeful Solarpunk narratives as optimistic highlights.</li>
+                    </ul>
+                </li>
+                <li>Foundational Context: Featuring iconic figures like Octavia E. Butler early, providing foundational context that enhances appreciation of contemporary successors.</li>
+            </ul>
+
+            <h3>Flexibility and Personalization: Your Journey, Your Pace</h3>
+             <ul>
+                <li>Adjust the Tempo: Adapt to your evolving listening habits and life commitments without losing thematic coherence.</li>
+                <li>Make It Yours: Substitute or rearrange titles based on emerging interests, author discoveries, or personal mood.</li>
+                <li>Deeper Exploration: If certain authors or genres captivate you, use this list as a springboard for further exploration.</li>
+            </ul>
+
+            <h3>The Enduring Magic of Speculative Storytelling</h3>
+            <p>Ultimately, this auditory journey invites you to deeply engage with speculative fiction’s transformative power. Each story, brought vividly to life through narration, promises to challenge assumptions, spark imagination, foster profound empathy, and inspire critical reflection about our world and its myriad possibilities.</p>
+            
+            <div class="key-container">
+                <h3>Key:</h3>
+                <p>
+                    <span class="key-item key-ga">(GA) - GraphicAudio Production</span>
+                    <span class="key-item key-mc">(MC) - Multicast Production</span>
+                    <span class="key-item key-pc">(PC) - Palate Cleanser</span>
+                </p>
+            </div>
+        </section>
+
+        <section id="year-2025" aria-labelledby="heading-2025">
+            <div class="container">
+                <h2 id="heading-2025">The Odyssey Begins: 2025</h2>
+
+                <div class="phase">
+                    <div class="phase-header">
+                        <div>
+                            <h3>Phase 1: Finishing Strong & Shifting Gears</h3>
+                            <span class="phase-date">Late May - Mid June 2025</span>
+                        </div>
+                        <button class="toggle-theme-btn" aria-expanded="false" aria-controls="thematic-trace-p1-2025">Show Themes ✨</button>
+                    </div>
+                    <div id="thematic-trace-p1-2025" class="thematic-trace">
+                        <h4>Thematic Tracing:</h4>
+                        <p><strong>Grand Epic Fantasy and Space Opera Transition:</strong></p>
+                        <ul>
+                            <li>The Will of the Many: Explores complex societal structures, rebellion, and the weight of history within a meticulously crafted epic fantasy world.</li>
+                            <li>The First Sister Trilogy: Deeply engages themes of identity, bodily autonomy, systemic oppression, and artificial intelligence within a character-driven space opera.</li>
+                        </ul>
+                        <p><em>Significance:</em> This phase transitions from the conclusion of a grand-scale epic fantasy to a complete, humanistic sci-fi series, setting the stage for diverse genre explorations.</p>
+                    </div>
+
+                    <article class="event-block">
+                        <span class="event-block-date">Current Week (Ending June 1, 2025)</span>
+                        <h4>Finish Will of the Many by James Islington (≈20 h remaining)</h4>
+                        <div class="event-details">
+                            <p><strong>Weekly Load:</strong> 20 hours.</p>
+                            <p><strong>Theme & Concept:</strong> Grand scale epic fantasy.</p>
+                            <p><strong>Why this Season:</strong> Energetic feel of early summer, good for concluding a large work.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">June 2 - June 22, 2025 (3 weeks): SERIES BINGE</span>
+                        <h4>The First Sister (The First Sister Trilogy #1) by Linden A. Lewis (12 h)</h4>
+                        <h4>The Second Rebel (The First Sister Trilogy #2) by Linden A. Lewis (16 h)</h4>
+                        <h4>The Last Hero (The First Sister Trilogy #3) by Linden A. Lewis (approx. 16h)</h4>
+                        <div class="event-details">
+                            <p><strong>Total Series Load:</strong> ~44 hours.</p>
+                            <p><strong>Weekly Load:</strong> ~14-15 h/week.</p>
+                            <p><strong>Theme & Concept:</strong> Space opera with identity, rebellion, bodily autonomy, and AI. Completing the trilogy provides full narrative arc.</p>
+                            <p><strong>Why this Season:</strong> Transitions from epic fantasy to a complete, character-driven space opera series as summer begins.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="phase">
+                    <div class="phase-header">
+                        <div>
+                            <h3>Phase 2: Epic Immersions</h3>
+                            <span class="phase-date">Late June - Early September 2025</span>
+                        </div>
+                        <button class="toggle-theme-btn" aria-expanded="false" aria-controls="thematic-trace-p2-2025">Show Themes ✨</button>
+                    </div>
+                    <div id="thematic-trace-p2-2025" class="thematic-trace">
+                        <h4>Thematic Tracing:</h4>
+                        <p><strong>Fantasy Realms and Existential Reflection:</strong></p>
+                        <ul>
+                            <li>Mistborn (GA): Classic themes of revolt against oppressive systems, intricate magic, and societal transformation, enhanced by a full-cast audio drama.</li>
+                            <li>Licanius Trilogy: Deep themes of fate, free will, memory manipulation, prejudice, and the cyclical nature of history within a complex epic fantasy.</li>
+                            <li>Blindsight: Explores consciousness, the nature of intelligence, and existential horror in a hard science fiction context.</li>
+                        </ul>
+                        <p><em>Significance:</em> This phase moves from rebellion-focused epic fantasy to profound philosophical questioning in both fantasy and hard sci-fi, offering substantial, immersive experiences for summer listening.</p>
+                    </div>
+
+                    <article class="event-block">
+                        <span class="event-block-date">June 23 - July 13, 2025 (3 weeks): GA BINGE</span>
+                        <h4>Mistborn: The Final Empire <span class="audio-tag tag-ga">(GA)</span> Pt 1-3 by Brandon Sanderson (≈30 h total)</h4>
+                        <div class="event-details">
+                            <p><strong>Weekly Load:</strong> 10h GA + 5-13h podcasts/other per week.</p>
+                            <p><strong>Theme & Concept:</strong> Classic epic fantasy, rebellion, intricate magic. Cinematic GA experience.</p>
+                            <p><strong>Why this Season:</strong> Summer blockbuster listen.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">July 14 - August 24, 2025 (6 weeks): SERIES BINGE</span>
+                        <h4>Licanius #1: The Shadow of What Was Lost by James Islington (≈26h)</h4>
+                        <h4>Licanius #2: An Echo of Things to Come by James Islington (≈29h)</h4>
+                        <h4>Licanius #3: The Light of All That Falls by James Islington (≈38h)</h4>
+                        <div class="event-details">
+                            <p><strong>Total Series Load:</strong> ~93 hours.</p>
+                            <p><strong>Weekly Load:</strong> ~15-16 h/week.</p>
+                            <p><strong>Theme & Concept:</strong> Epic fantasy with forbidden magic, ancient evils, memory, prejudice, and destiny. Completing the trilogy offers a massive, immersive experience.</p>
+                            <p><strong>Why this Season:</strong> A deep, substantial epic fantasy binge for the heart of summer.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">August 25 - August 31, 2025 (1 week)</span>
+                        <h4>Blindsight by Peter Watts (11 h)</h4>
+                        <div class="event-details">
+                             <p><strong>Weekly Load:</strong> 11-15 h.</p>
+                             <p><strong>Theme & Concept:</strong> Hard science fiction, first contact, consciousness, philosophical horror.</p>
+                             <p><strong>Why this Season:</strong> A sharp intellectual contrast after the epic fantasy of Licanius.</p>
+                        </div>
+                    </article>
+                </div>
+                <div class="phase">
+                    <div class="phase-header">
+                        <div>
+                            <h3>Phase 3: GA Hits & Dark Age Prep</h3>
+                            <span class="phase-date">Early Sep - Mid Sep 2025</span>
+                        </div>
+                        <button class="toggle-theme-btn" aria-expanded="false" aria-controls="thematic-trace-p3-2025">Show Themes ✨</button>
+                    </div>
+                    <div id="thematic-trace-p3-2025" class="thematic-trace">
+                        <h4>Thematic Tracing:</h4>
+                        <p><strong>Dark Fantasy, Satire, and Anticipation:</strong></p>
+                        <ul>
+                            <li>Ring Shout (GA): Historical trauma, Black resilience, and cosmic horror meet in a potent dark fantasy GA production.</li>
+                            <li>Service Model: Satirical science fiction exploring AI consciousness, servitude, and the absurdities of human dependence on technology.</li>
+                            <li>Iron Gold Recap: Prepares for the intensity of Dark Age by refreshing key plot points and character arcs.</li>
+                        </ul>
+                        <p><em>Significance:</em> This phase offers a GA dark fantasy hit and a witty SF satire before a brief pause to prime for the anticipated emotional and narrative weight of the next Red Rising installment.</p>
+                    </div>
+                    <article class="event-block">
+                        <span class="event-block-date">September 1 - September 7, 2025 (1 week)</span>
+                        <h4>Ring Shout <span class="audio-tag tag-ga">(GA)</span> <span class="audio-tag tag-pc">(PC)</span> by P. Djèlí Clark (5.5 h)</h4>
+                        <h4>Service Model by Adrian Tchaikovsky (12 h)</h4>
+                        <div class="event-details">
+                            <p><strong>Weekly Load:</strong> 17-18 h.</p>
+                            <p><strong>Theme & Concept:</strong> Ring Shout: Dark fantasy/horror, historical trauma, Black resilience. Potent GA. Service Model: Satirical SF, AI consciousness, servitude.</p>
+                            <p><strong>Why this Season:</strong> Ring Shout as a GA hit. Service Model for wit and SF concepts.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">September 8 - September 14, 2025 (1 week)</span>
+                        <h4>Iron Gold recap (Red Rising Saga) (3 h) + rest / podcasts.</h4>
+                        <div class="event-details">
+                            <p><strong>Weekly Load:</strong> 3-10 h.</p>
+                            <p><strong>Theme & Concept:</strong> Memory refresh for Red Rising.</p>
+                            <p><strong>Why this Season:</strong> Lighter week to prime for Dark Age.</p>
+                        </div>
+                    </article>
+                </div>
+                <div class="phase">
+                    <div class="phase-header">
+                        <div>
+                            <h3>Phase 4: The Howl of Dark Age & Its Varied Echoes</h3>
+                            <span class="phase-date">Mid Sep - Late Nov 2025</span>
+                        </div>
+                        <button class="toggle-theme-btn" aria-expanded="false" aria-controls="thematic-trace-p4-2025">Show Themes ✨</button>
+                    </div>
+                    <div id="thematic-trace-p4-2025" class="thematic-trace">
+                        <h4>Thematic Tracing:</h4>
+                        <p><strong>High-Stakes Space Opera, Found Family, and Afrofuturist Exploration:</strong></p>
+                        <ul>
+                            <li>Dark Age (GA): Brutal, high-stakes space opera focusing on war, sacrifice, and political intrigue.</li>
+                            <li>Some Desperate Glory: Explores indoctrination, radicalization, and the power of found family in a high emotional stakes space opera.</li>
+                            <li>The Murderbot Diaries (Novellas 1-4): Witty, action-packed sci-fi offering a humorous and engaging break with themes of identity and autonomy.</li>
+                            <li>Binti Trilogy: Afrofuturist exploration of identity, culture, communication, and diplomacy on an interstellar stage.</li>
+                            <li>The Vanished Birds: Lyrical, character-driven space opera focusing on love, loss, memory, and art.</li>
+                        </ul>
+                        <p><em>Significance:</em> This phase centers on the intense experience of Dark Age, then explores varied emotional and thematic echoes in other space operas and Afrofuturist works, offering both high-octane action and introspective narratives.</p>
+                    </div>
+                     <article class="event-block">
+                        <span class="event-block-date">September 15 - September 21, 2025 (Dark Age Release Focus)</span>
+                        <h4>Dark Age <span class="audio-tag tag-ga">(GA)</span> Pt 1 (Red Rising Saga, Book 5) by Pierce Brown (10 h)</h4>
+                        <div class="event-details">
+                            <p><strong>Weekly Load:</strong> ≈15h (DA Pt1 + ≈5h other listening).</p>
+                            <p><strong>Theme & Concept:</strong> Brutal, high-stakes space opera. War, sacrifice, political intrigue.</p>
+                            <p><strong>Why this Season:</strong> Culmination of anticipation.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">September 22 - October 5, 2025 (2 weeks)</span>
+                        <h4>Some Desperate Glory by Emily Tesh (15 h)</h4>
+                        <div class="event-details">
+                            <p><strong>Weekly Load:</strong> ~7-8h/week from this title, allowing for other listening.</p>
+                            <p><strong>Theme & Concept:</strong> Space opera with indoctrination, radicalization, found family. High emotional stakes.</p>
+                            <p><strong>Why this Season:</strong> Maintains a high-stakes feel post-Dark Age.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">October 6 - October 12, 2025 (1 week): SERIES BINGE</span>
+                        <h4>All Systems Red (The Murderbot Diaries #1) by Martha Wells (4 h)</h4>
+                        <h4>Artificial Condition (The Murderbot Diaries #2) by Martha Wells (3.5 h)</h4>
+                        <h4>Rogue Protocol (The Murderbot Diaries #3) by Martha Wells (3.5 h)</h4>
+                        <h4>Exit Strategy (The Murderbot Diaries #4) by Martha Wells (4 h)</h4>
+                        <div class="event-details">
+                            <p><strong>Total Series Load (Novellas 1-4):</strong> 15 hours.</p>
+                            <p><strong>Weekly Load:</strong> 15 hours.</p>
+                            <p><strong>Theme & Concept:</strong> Witty, action-packed sci-fi with a cynical, media-loving SecUnit. Excellent as a slightly longer, highly engaging palate cleanser block.</p>
+                            <p><strong>Why this Season:</strong> Murderbot offers a humorous and engaging break after intense reads.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">October 13 - October 19, 2025 (1 week): SERIES BINGE</span>
+                        <h4>Binti (Binti Trilogy #1) by Nnedi Okorafor (2.5 h)</h4>
+                        <h4>Binti: Home (Binti Trilogy #2) by Nnedi Okorafor (3.5h)</h4>
+                        <h4>Binti: The Night Masquerade (Binti Trilogy #3) by Nnedi Okorafor (4.5h)</h4>
+                        <div class="event-details">
+                            <p><strong>Total Series Load:</strong> 10.5 hours.</p>
+                            <p><strong>Weekly Load:</strong> 10.5 hours (can be combined with shorts or start next book).</p>
+                            <p><strong>Theme & Concept:</strong> Afrofuturist trilogy exploring identity, culture, communication, and diplomacy on an interstellar stage.</p>
+                            <p><strong>Why this Season:</strong> A complete, highly acclaimed trilogy that is thought-provoking and relatively quick to get through.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">October 20 - November 9, 2025 (3 weeks)</span>
+                        <h4>The Vanished Birds by Simon Jimenez (18 h)</h4>
+                        <div class="event-details">
+                            <p><strong>Weekly Load:</strong> 6h/week from this title + other listening.</p>
+                            <p><strong>Theme & Concept:</strong> Lyrical, character-driven space opera. Love, loss, memory, art.</p>
+                            <p><strong>Why this Season:</strong> As autumn deepens, this beautifully written novel offers an introspective space opera experience.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">November 10 - November 16, 2025 (1 week)</span>
+                        <h4>Mistborn: Secret History <span class="audio-tag tag-ga">(GA)</span> by Brandon Sanderson (5 h, if desired)</h4>
+                        <div class="event-details">
+                            <p><strong>Weekly Load:</strong> 10-18 h (including backlog shorts/buffer).</p>
+                            <p><strong>Theme & Concept:</strong> Deeper dive into Cosmere/Mistborn lore.</p>
+                            <p><strong>Why this Season:</strong> A GA treat before longer end-of-year reads.</p>
+                        </div>
+                    </article>
+                </div>
+                <div class="phase">
+                    <div class="phase-header">
+                        <div>
+                            <h3>Phase 5: Contrasting Flavors & Deep Dives</h3>
+                            <span class="phase-date">Mid Nov 2025 - Early Jan 2026</span>
+                        </div>
+                        <button class="toggle-theme-btn" aria-expanded="false" aria-controls="thematic-trace-p5-2025">Show Themes ✨</button>
+                    </div>
+                    <div id="thematic-trace-p5-2025" class="thematic-trace">
+                        <h4>Thematic Tracing:</h4>
+                        <p><strong>Sociopolitical SF, Hopeful Solarpunk, and Poetic Afrofuturism:</strong></p>
+                        <ul>
+                            <li>An Unkindness of Ghosts: Explores systemic oppression, neurodiversity, and trauma in a generation ship setting.</li>
+                            <li>Monk & Robot Series: Offers a hopeful, philosophical Solarpunk vision of human-robot interaction and finding purpose.</li>
+                            <li>The Strength of the Few (Bundle): Provides varied speculative fiction narratives.</li>
+                            <li>The Deep: A poetic Afrofuturist myth exploring collective memory, trauma, and identity.</li>
+                        </ul>
+                        <p><em>Significance:</em> This phase juxtaposes intense sociopolitical SF with hopeful Solarpunk and a reflective Afrofuturist piece, offering a range of emotional and intellectual experiences as the year closes and a new one begins.</p>
+                    </div>
+                    <article class="event-block">
+                        <span class="event-block-date">November 17 - December 7, 2025 (3 weeks)</span>
+                        <h4>An Unkindness of Ghosts by Rivers Solomon (14 h)</h4>
+                        <h4>A Psalm for the Wild-Built (Monk & Robot #1) <span class="audio-tag tag-pc">(PC)</span> by Becky Chambers (4 h)</h4>
+                        <h4>A Prayer for the Crown-Shy (Monk & Robot #2) <span class="audio-tag tag-pc">(PC)</span> by Becky Chambers (4 h)</h4>
+                        <div class="event-details">
+                            <p><strong>Total:</strong> 22h for these titles.</p>
+                            <p><strong>Weekly Load:</strong> ~7-8h/week from these, allowing for other listening.</p>
+                            <p><strong>Theme & Concept:</strong> An Unkindness of Ghosts: Sociopolitical SF, systemic oppression, neurodiversity, trauma. Monk & Robot series: Hopeful, philosophical Solarpunk.</p>
+                            <p><strong>Why this Season:</strong> Depth of An Unkindness of Ghosts for autumn. Monk & Robot as a crucial palate cleanser.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">December 8 - December 28, 2025 (3 weeks)</span>
+                        <h4>The Strength of the Few (21 h bundle - specific titles from your original plan)</h4>
+                        <div class="event-details">
+                            <p><strong>Weekly Load:</strong> 15-21 h/week.</p>
+                            <p><strong>Theme & Concept:</strong> Varied speculative fiction.</p>
+                            <p><strong>Why this Season:</strong> Continues deeper engagement with varied narratives.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">December 29, 2025 - January 4, 2026 (1 week): Poetic Afrofuturism <span class="audio-tag tag-pc">(PC)</span></span>
+                        <h4>The Deep by Rivers Solomon, with Daveed Diggs, William Hutson, & Jonathan Snipes (4h 1m). Narrated by Daveed Diggs.</h4>
+                        <div class="event-details">
+                            <p><strong>Theme & Concept:</strong> Afrofuturist myth, collective memory, trauma, identity.</p>
+                            <p><strong>Why this Season:</strong> Reflective, artistic piece to start the new year.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="year-2026" aria-labelledby="heading-2026">
+            <div class="container">
+                <h2 id="heading-2026">Continuing the Odyssey: 2026</h2>
+                <div class="phase">
+                    <div class="phase-header">
+                        <div>
+                            <h3>Phase 6: Epic Conclusions & Cosmic Horizons</h3>
+                            <span class="phase-date">Early Jan - Late Apr 2026</span>
+                        </div>
+                        <button class="toggle-theme-btn" aria-expanded="false" aria-controls="thematic-trace-p6-2026">Show Themes ✨</button>
+                    </div>
+                    <div id="thematic-trace-p6-2026" class="thematic-trace">
+                        <h4>Thematic Tracing:</h4>
+                        <p><strong>Character-Driven Fantasy, Expansive Sci-Fi, and Foundational Afrofuturism:</strong></p>
+                        <ul>
+                            <li>The Sword of Kaigen: Character-driven military fantasy exploring sacrifice, family, and cultural expectations.</li>
+                            <li>Children of Time Series (Ruin & Memory): Expansive, big-idea science fiction delving into alien intelligence, consciousness, and societal evolution.</li>
+                            <li>Patternist Series: Foundational Afrofuturism by Octavia E. Butler, exploring power, eugenics, psionic abilities, and societal evolution over millennia.</li>
+                            <li>The Sixth World Series: Indigenous futurism blending post-apocalyptic urban fantasy with Navajo mythology.</li>
+                        </ul>
+                        <p><em>Significance:</em> This phase offers profound epics for winter contemplation, including a major Butler series and explorations of unique cultural futurisms, transitioning into dynamic series as spring approaches.</p>
+                    </div>
+                    <article class="event-block">
+                        <span class="event-block-date">January 5 - February 22, 2026 (7 weeks)</span>
+                        <h4>The Sword of Kaigen by M.L. Wang (22 h)</h4>
+                        <h4>Children of Ruin (Children of Time #2) by Adrian Tchaikovsky (16 h)</h4>
+                        <h4>Children of Memory (Children of Time #3) by Adrian Tchaikovsky (14 h)</h4>
+                        <div class="event-details">
+                            <p><strong>Total:</strong> 52 hours of main content.</p>
+                            <p><strong>Weekly Load:</strong> ~7-8h/week from these main titles, allowing for other listening to meet 15-22h target.</p>
+                            <p><strong>Theme & Concept:</strong> The Sword of Kaigen: Character-driven military fantasy, sacrifice, family. Children of Ruin/Memory: Expansive, big-idea SF, alien intelligence, consciousness.</p>
+                            <p><strong>Why this Season:</strong> Profound epics for winter contemplation.</p>
+                        </div>
+                    </article>
+                     <article class="event-block">
+                        <span class="event-block-date">February 23 - March 22, 2026 (4 weeks): SERIES BINGE</span>
+                        <h4>Wild Seed (Patternist #1) by Octavia E. Butler (11h 9m). Narrated by Robin Miles.</h4>
+                        <h4>Mind of My Mind (Patternist #2) by Octavia E. Butler (approx. 8h). Narrated by Robin Miles.</h4>
+                        <h4>Clay's Ark (Patternist #3) by Octavia E. Butler (approx. 7h). Narrated by various, Robin Miles for some.</h4>
+                        <h4>Patternmaster (Patternist #4) by Octavia E. Butler (approx. 6h). Narrated by Robin Miles.</h4>
+                        <div class="event-details">
+                            <p><strong>Total Series Load:</strong> ~32 hours.</p>
+                            <p><strong>Weekly Load:</strong> ~8 h/week.</p>
+                            <p><strong>Theme & Concept:</strong> Foundational Afrofuturism, exploring power, eugenics, psionic abilities, and societal evolution over millennia.</p>
+                            <p><strong>Why this Season:</strong> Completing a seminal Butler series as late winter transitions to early spring.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">March 23 - April 19, 2026 (4 weeks): SERIES BINGE</span>
+                        <h4>Trail of Lightning (The Sixth World #1) by Rebecca Roanhorse (8h 58m). Narrated by Tanis Parenteau.</h4>
+                        <h4>Storm of Locusts (The Sixth World #2) by Rebecca Roanhorse (9h 50m approx). Narrated by Tanis Parenteau.</h4>
+                        <div class="event-details">
+                            <p><strong>Total Series Load (2 books):</strong> ~19 hours. (Anticipate Book 3, Black Sun Rising, may fit here if available).</p>
+                            <p><strong>Weekly Load:</strong> Flexible; if 2 books, spread over 2-3 weeks. If 3 books, ~10h/week.</p>
+                            <p><strong>Theme & Concept:</strong> Indigenous futurism, post-apocalyptic urban fantasy, Navajo mythology.</p>
+                            <p><strong>Why this Season:</strong> Dynamic series with a strong voice.</p>
+                        </div>
+                    </article>
+                </div>
+                <div class="phase">
+                    <div class="phase-header">
+                        <div>
+                            <h3>Spring/Summer 2026: Diverse Voices & Expansive Worlds</h3>
+                            <span class="phase-date">Late Apr - Aug 2026</span>
+                        </div>
+                        <button class="toggle-theme-btn" aria-expanded="false" aria-controls="thematic-trace-ss-2026">Show Themes ✨</button>
+                    </div>
+                    <div id="thematic-trace-ss-2026" class="thematic-trace">
+                        <h4>Thematic Tracing:</h4>
+                        <p><strong>Varied Cultural Futurisms, Gothic Horror, Epic Afrofantasy, and Climate Fiction:</strong></p>
+                        <ul>
+                            <li>Lagoon: Chaotic first contact in Lagos, blending sci-fi with Nigerian mythology and social commentary.</li>
+                            <li>Glass and Gardens: Solarpunk Summers: Optimistic visions of sustainable futures.</li>
+                            <li>Mexican Gothic: Atmospheric Latinx Gothic horror critiquing power and patriarchy.</li>
+                            <li>Dark Star Trilogy: Epic Afrofantasy drawing on African history and mythology, exploring unreliable narration.</li>
+                            <li>Out There Screaming: New Black horror anthology.</li>
+                            <li>The Ministry for the Future: Monumental climate fiction exploring global politics and resilience.</li>
+                            <li>Never Whistle at Night: Indigenous dark fiction anthology.</li>
+                            <li>Womb City: Inventive Africanfuturism exploring bodies as resources and consciousness transfer.</li>
+                            <li>The Perfect Assassin: Adventure fantasy offering a potential palate cleanser or series binge.</li>
+                        </ul>
+                        <p><em>Significance:</em> This extended phase showcases a vibrant array of diverse voices and genres, from Afrofuturism and Solarpunk to Gothic horror and epic fantasy, reflecting the expansive possibilities of speculative fiction for spring and summer immersion.</p>
+                    </div>
+                    <article class="event-block">
+                        <span class="event-block-date">April 20 - April 26, 2026 (1 week): Chaotic First Contact <span class="audio-tag tag-mc">(MC)</span></span>
+                        <h4>Lagoon by Nnedi Okorafor (10h 41m). Narrated by Adjoa Andoh & Ben Onwukwe.</h4>
+                        <div class="event-details">
+                            <p><strong>Theme & Concept:</strong> Alien arrival in Lagos, blending sci-fi, Nigerian mythology, social commentary.</p>
+                            <p><strong>Why this Season:</strong> Vibrant, complex standalone.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">April 27 - May 3, 2026 (1 week): Hopeful Visions <span class="audio-tag tag-pc">(PC)</span></span>
+                        <h4>Glass and Gardens: Solarpunk Summers (Anthology) (Est. 10-15h). Narrator varies.</h4>
+                        <div class="event-details">
+                            <p><strong>Theme & Concept:</strong> Optimistic SF, sustainable futures.</p>
+                            <p><strong>Why this Season:</strong> Injection of Solarpunk hope.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">May 4 - May 10, 2026 (1 week): Latinx Gothic Horror</span>
+                        <h4>Mexican Gothic by Silvia Moreno-Garcia (10h 39m). Narrated by Frankie Corzo.</h4>
+                        <div class="event-details">
+                            <p><strong>Theme & Concept:</strong> Atmospheric horror, critique of power and patriarchy.</p>
+                            <p><strong>Why this Season:</strong> Rich, unsettling experience.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">May 11 - May 31, 2026 (3 weeks): SERIES BINGE</span>
+                        <h4>Black Leopard, Red Wolf (Dark Star Trilogy #1) by Marlon James (24h 2m). Narrated by Dion Graham.</h4>
+                        <h4>Moon Witch, Spider King (Dark Star Trilogy #2) by Marlon James (approx. 26h). Narrated by Bahni Turpin.</h4>
+                        <div class="event-details">
+                            <p><strong>Total Series Load (2 books):</strong> ~50 hours. (Anticipate Book 3, White Wing, Dark Star, may fit here if available).</p>
+                            <p><strong>Weekly Load:</strong> If 2 books: ~16-17 h/week. If 3 books (over ~5 weeks): ~15h/week.</p>
+                            <p><strong>Theme & Concept:</strong> Epic Afrofantasy, African history/mythology, unreliable narration.</p>
+                            <p><strong>Why this Season:</strong> Deeply immersive and ambitious work.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">June 1 - June 14, 2026 (2 weeks): Black Horror Anthology <span class="audio-tag tag-mc">(MC)</span><span class="audio-tag tag-pc">(PC)</span></span>
+                        <h4>Out There Screaming: An Anthology of New Black Horror Ed. Jordan Peele & John Joseph Adams (14h). Narrated by Jordan Peele & Full Cast.</h4>
+                        <div class="event-details">
+                            <p><strong>Theme & Concept:</strong> New horror from Black authors.</p>
+                            <p><strong>Why this Season:</strong> Multicast experience, diverse voices after intense Dark Star.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">June 15 - July 5, 2026 (3 weeks): Monumental Climate Fiction <span class="audio-tag tag-mc">(MC)</span></span>
+                        <h4>The Ministry for the Future by Kim Stanley Robinson (20h 42m). Narrated by Jennifer Fitzgerald, Fajer Al-Kaisi, & others.</h4>
+                        <div class="event-details">
+                            <p><strong>Theme & Concept:</strong> Near-future climate catastrophe, UN agency, global politics, resilience.</p>
+                            <p><strong>Why this Season:</strong> Summer's connection to climate.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">July 6 - July 19, 2026 (2 weeks): Indigenous Dark Fiction <span class="audio-tag tag-mc">(MC)</span></span>
+                        <h4>Never Whistle at Night: An Indigenous Dark Fiction Anthology Ed. Shane Hawk & Theodore C. Van Alst Jr. (13h 23m). Narrated by Full Indigenous Cast.</h4>
+                        <div class="event-details">
+                            <p><strong>Theme & Concept:</strong> Original dark fiction from Indigenous authors.</p>
+                            <p><strong>Why this Season:</strong> Powerful multicast anthology.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">July 20 - August 2, 2026 (2 weeks): Inventive Africanfuturism</span>
+                        <h4>Womb City by Tlotlo Tsamaase (16h 38m). Narrated by Christel Mutombo.</h4>
+                        <div class="event-details">
+                            <p><strong>Theme & Concept:</strong> Futuristic Botswana, bodies as resource, consciousness transfer. Sci-fi, horror, social critique.</p>
+                            <p><strong>Why this Season:</strong> Challenging, genre-bending debut.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">August 3 - August 9, 2026 (1 week): Adventure Fantasy <span class="audio-tag tag-pc">(PC)</span></span>
+                        <h4>The Perfect Assassin (The Chronicles of Ghadid #1) by K.A. Doore (12h approx). Narrated by Nikki Massoud.</h4>
+                        <div class="event-details">
+                            <p><strong>Theme & Concept:</strong> Assassin family, ancient magic, political intrigue.</p>
+                            <p><strong>Why this Season:</strong> Palate cleanser with straightforward narrative if kept as standalone. If binged, an engaging fantasy romp.</p>
+                        </div>
+                    </article>
+                </div>
+                <div class="phase">
+                    <div class="phase-header">
+                        <div>
+                            <h3>Late Summer/Autumn 2026: Celebrated Series & Groundbreaking Sci-Fi</h3>
+                            <span class="phase-date">Mid Aug - Early Nov 2026</span>
+                        </div>
+                        <button class="toggle-theme-btn" aria-expanded="false" aria-controls="thematic-trace-lsa-2026">Show Themes ✨</button>
+                    </div>
+                    <div id="thematic-trace-lsa-2026" class="thematic-trace">
+                        <h4>Thematic Tracing:</h4>
+                        <p><strong>YA Afrofantasy, Sociopolitical Sci-Fi, and Deep Black Horror:</strong></p>
+                        <ul>
+                            <li>Legacy of Orïsha Series: West-African inspired YA fantasy exploring heritage, rebellion, and power.</li>
+                            <li>Imperial Radch Trilogy: Groundbreaking sociopolitical science fiction examining AI, consciousness, colonialism, and gender.</li>
+                            <li>African Immortals Series: A major Black horror series from Tananarive Due, delving into immortality, supernatural dread, domestic upheaval, and historical sweep.</li>
+                        </ul>
+                        <p><em>Significance:</em> This phase offers engaging and popular series for late summer immersion, transitioning into critically acclaimed and thematically rich works perfect for autumn's deeper dives and spooky season lead-up.</p>
+                    </div>
+                    <article class="event-block">
+                        <span class="event-block-date">August 10 - August 30, 2026 (3 weeks): SERIES BINGE</span>
+                        <h4>Children of Blood and Bone (Legacy of Orïsha #1) by Tomi Adeyemi (17h 56m). Narrated by Bahni Turpin.</h4>
+                        <h4>Children of Virtue and Vengeance (Legacy of Orïsha #2) by Tomi Adeyemi (13h 30m approx). Narrated by Bahni Turpin.</h4>
+                        <h4>Children of Anguish and Anarchy (Legacy of Orïsha #3) by Tomi Adeyemi (approx. 17h, available by this time). Narrated by Bahni Turpin.</h4>
+                        <div class="event-details">
+                            <p><strong>Total Series Load:</strong> ~48.5 hours.</p>
+                            <p><strong>Weekly Load:</strong> ~16 h/week.</p>
+                            <p><strong>Theme & Concept:</strong> West-African inspired YA fantasy. Heritage, rebellion, power.</p>
+                            <p><strong>Why this Season:</strong> Engaging, popular series for summer immersion.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">August 31 - September 20, 2026 (3 weeks): SERIES BINGE</span>
+                        <h4>Ancillary Justice (Imperial Radch #1) by Ann Leckie (12h 41m). Narrated by Adjoa Andoh.</h4>
+                        <h4>Ancillary Sword (Imperial Radch #2) by Ann Leckie (11h approx). Narrated by Adjoa Andoh.</h4>
+                        <h4>Ancillary Mercy (Imperial Radch #3) by Ann Leckie (approx. 11.5h). Narrated by Adjoa Andoh.</h4>
+                        <div class="event-details">
+                            <p><strong>Total Series Load:</strong> ~35.2 hours.</p>
+                            <p><strong>Weekly Load:</strong> ~11-12 h/week.</p>
+                            <p><strong>Theme & Concept:</strong> Groundbreaking sociopolitical SF. AI, consciousness, colonialism, gender.</p>
+                            <p><strong>Why this Season:</strong> Critically acclaimed trilogy to round out summer and begin autumn's deeper dives.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">September 21 - November 8, 2026 (7 weeks): SERIES BINGE</span>
+                        <h4>My Soul to Keep (African Immortals #1) by Tananarive Due (18h 17m). Narrated by Peter Francis James.</h4>
+                        <h4>The Living Blood (African Immortals #2) by Tananarive Due (approx. 20h). Narrated by Peter Francis James / Robin Miles.</h4>
+                        <h4>Blood Colony (African Immortals #3) by Tananarive Due (approx. 18h). Narrated by Robin Miles.</h4>
+                        <h4>My Soul to Take (African Immortals #4) by Tananarive Due (approx. 12h). Narrated by Robin Miles.</h4>
+                        <div class="event-details">
+                            <p><strong>Total Series Load:</strong> ~68 hours.</p>
+                            <p><strong>Weekly Load:</strong> ~9-10 h/week from this series, allowing flexibility.</p>
+                            <p><strong>Theme & Concept:</strong> Black horror, immortality, supernatural dread, domestic upheaval, historical sweep.</p>
+                            <p><strong>Why this Season:</strong> A major horror series from a master of the genre, perfect for autumn's spooky and introspective mood.</p>
+                        </div>
+                    </article>
+                </div>
+                <div class="phase">
+                    <div class="phase-header">
+                        <div>
+                            <h3>Late Autumn 2026 / Early Winter 2026/2027: Horror, GA, and Urban Fantasy</h3>
+                            <span class="phase-date">Early Nov - Mid Dec 2026</span>
+                        </div>
+                        <button class="toggle-theme-btn" aria-expanded="false" aria-controls="thematic-trace-laew-2026">Show Themes ✨</button>
+                    </div>
+                    <div id="thematic-trace-laew-2026" class="thematic-trace">
+                        <h4>Thematic Tracing:</h4>
+                        <p><strong>Diverse Horror and Atmospheric Steampunk:</strong></p>
+                        <ul>
+                            <li>The Gilda Stories: Unique Black lesbian vampire narrative spanning American history, exploring identity and survival.</li>
+                            <li>The Good House: Atmospheric Black horror focusing on haunted houses, family curses, and grief.</li>
+                            <li>The Only Good Indians: Intense Indigenous horror dealing with vengeful entities, cultural identity, and generational trauma.</li>
+                            <li>The Haunting of Tram Car 015 (GA): Fun, atmospheric steampunk mystery with djinn in an alternate Cairo.</li>
+                        </ul>
+                        <p><em>Significance:</em> This phase leans into the darker, more atmospheric tones of late autumn and early winter with a variety of horror from diverse voices, punctuated by a lighter GA steampunk production.</p>
+                    </div>
+                    <article class="event-block">
+                        <span class="event-block-date">November 9 - November 15, 2026 (1 week): Unique Vampire Narrative <span class="audio-tag tag-mc">(MC)</span><span class="audio-tag tag-pc">(PC)</span></span>
+                        <h4>The Gilda Stories by Jewelle Gomez (8h 30m). Narrated by Adenrele Ojo, Cherrelle Skeete, & full cast.</h4>
+                        <div class="event-details">
+                            <p><strong>Theme & Concept:</strong> Black lesbian vampire through American history. Identity, community, survival.</p>
+                            <p><strong>Why this Season:</strong> Literary, engaging palate cleanser.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">November 16 - November 29, 2026 (2 weeks): Atmospheric Black Horror</span>
+                        <h4>The Good House by Tananarive Due (21h 54m). Narrated by Robin Miles.</h4>
+                        <div class="event-details">
+                            <p><strong>Theme & Concept:</strong> Haunted house, family curses, grief.</p>
+                            <p><strong>Why this Season:</strong> Long, atmospheric horror for late autumn.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">November 30 - December 6, 2026 (1 week): Indigenous Horror Classic</span>
+                        <h4>The Only Good Indians by Stephen Graham Jones (9h 2m). Narrated by Shaun Taylor-Corbett.</h4>
+                        <div class="event-details">
+                            <p><strong>Theme & Concept:</strong> Vengeful entity, cultural identity, generational trauma.</p>
+                            <p><strong>Why this Season:</strong> Intense, critically acclaimed Indigenous horror.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">December 7 - December 13, 2026 (1 week): GA Production / Short Steampunk Mystery <span class="audio-tag tag-ga">(GA)</span><span class="audio-tag tag-pc">(PC)</span></span>
+                        <h4>The Haunting of Tram Car 015 (GA) by P. Djèlí Clark (3h).</h4>
+                        <div class="event-details">
+                            <p><strong>Theme & Concept:</strong> Steampunk, djinn, mystery in alternate Cairo.</p>
+                            <p><strong>Why this Season:</strong> Fun, atmospheric GA break.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="year-2027" aria-labelledby="heading-2027">
+            <div class="container">
+                <h2 id="heading-2027">The Journey Deepens: 2027</h2>
+                <div class="phase">
+                    <div class="phase-header">
+                        <div>
+                            <h3>Winter 2026/2027: Immersion, Reflection, and Grand Ideas</h3>
+                            <span class="phase-date">Mid Dec 2026 - Feb 2027</span>
+                        </div>
+                        <button class="toggle-theme-btn" aria-expanded="false" aria-controls="thematic-trace-w-2627">Show Themes ✨</button>
+                    </div>
+                    <div id="thematic-trace-w-2627" class="thematic-trace">
+                        <h4>Thematic Tracing:</h4>
+                        <p><strong>Urban Fantasy Epics, Profound Afrofuturism, and Hopeful Visions:</strong></p>
+                        <ul>
+                            <li>Great Cities Duology: Urban fantasy epic where NYC boroughs become sentient, exploring identity, community, and gentrification.</li>
+                            <li>Who Fears Death: Powerful Afrofuturist novel set in post-apocalyptic Africa, dealing with magic, destiny, and identity.</li>
+                            <li>Remote Control: Poetic Afrofuturist fable about a girl adopted by Death, exploring fear and connection.</li>
+                            <li>The Inheritance of Orquídea Divina: Latinx magical realism weaving family secrets, curses, and hidden histories.</li>
+                            <li>Lone Women: Black horror/historical Western set in 1915 Montana, focusing on secrets and isolation.</li>
+                            <li>Glass and Gardens: Solarpunk Winters: Optimistic visions of sustainable futures with a winter theme.</li>
+                             <li>Walkaway: Grand sociopolitical sci-fi exploring post-scarcity, open-source communities, and technological immortality.</li>
+                        </ul>
+                        <p><em>Significance:</em> This winter phase offers immersive urban fantasy, profound Afrofuturist works for deep contemplation, unique cultural narratives, and hopeful Solarpunk visions, culminating in a big-ideas multicast experience.</p>
+                    </div>
+                     <article class="event-block">
+                        <span class="event-block-date">December 14, 2026 - January 3, 2027 (3 weeks): SERIES BINGE</span>
+                        <h4>The City We Became (Great Cities #1) by N.K. Jemisin (16h 12m). Narrated by Robin Miles.</h4>
+                        <h4>The World We Make (Great Cities #2) by N.K. Jemisin (15h approx). Narrated by Robin Miles.</h4>
+                        <div class="event-details">
+                            <p><strong>Total Series Load:</strong> ~31 hours.</p>
+                            <p><strong>Weekly Load:</strong> ~10 h/week from this series.</p>
+                            <p><strong>Theme & Concept:</strong> Urban fantasy epic. NYC boroughs as sentient avatars. Identity, community, gentrification.</p>
+                            <p><strong>Why this Season:</strong> Vibrant, powerful series for winter immersion.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">January 4 - January 17, 2027 (2 weeks): Profound Afrofuturism</span>
+                        <h4>Who Fears Death by Nnedi Okorafor (16h 59m). Narrated by Yetide Badaki.</h4>
+                        <div class="event-details">
+                            <p><strong>Theme & Concept:</strong> Post-apocalyptic Africa, magic, destiny, identity.</p>
+                            <p><strong>Why this Season:</strong> Powerful, challenging novel for deep winter contemplation.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">January 18 - January 24, 2027 (1 week): Poetic Afrofuturist Fable <span class="audio-tag tag-pc">(PC)</span></span>
+                        <h4>Remote Control by Nnedi Okorafor (4h 7m). Narrated by Adjoa Andoh.</h4>
+                        <div class="event-details">
+                            <p><strong>Theme & Concept:</strong> Girl as adopted daughter of Death. Fear, connection, folklore.</p>
+                            <p><strong>Why this Season:</strong> Shorter, lyrical novella.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">January 25 - January 31, 2027 (1 week): Latinx Magical Realism</span>
+                        <h4>The Inheritance of Orquídea Divina by Zoraida Córdova (10h 57m). Narrated by Frankie Corzo.</h4>
+                        <div class="event-details">
+                            <p><strong>Theme & Concept:</strong> Family secrets, curses, magic, hidden histories.</p>
+                            <p><strong>Why this Season:</strong> Lush, captivating story for mid-winter.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">February 1 - February 7, 2027 (1 week): Black Horror/Historical Western</span>
+                        <h4>Lone Women by Victor LaValle (9h 11m). Narrated by Joniece Abbott-Pratt.</h4>
+                        <div class="event-details">
+                            <p><strong>Theme & Concept:</strong> 1915 Montana, locked trunk, secrets, isolation.</p>
+                            <p><strong>Why this Season:</strong> Chilling blend of genres.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">February 8 - February 14, 2027 (1 week): Hopeful Winter Visions <span class="audio-tag tag-pc">(PC)</span></span>
+                        <h4>Glass and Gardens: Solarpunk Winters (Anthology) (Est. 10-15h). Narrator varies.</h4>
+                        <div class="event-details">
+                            <p><strong>Theme & Concept:</strong> Optimistic SF, sustainable futures, winter theme.</p>
+                            <p><strong>Why this Season:</strong> Hopeful visions for late winter.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">February 15 - February 28, 2027 (2 weeks): Grand Sociopolitical Sci-Fi <span class="audio-tag tag-mc">(MC)</span></span>
+                        <h4>Walkaway by Cory Doctorow (19-22h). Narrated by Full Cast (Wil Wheaton, Amber Benson, etc.).</h4>
+                        <div class="event-details">
+                            <p><strong>Theme & Concept:</strong> Post-scarcity, open-source communities, technological immortality.</p>
+                            <p><strong>Why this Season:</strong> Big-ideas book with dynamic multicast to end the Winter 2026/2027 period.</p>
+                        </div>
+                    </article>
+                </div>
+                <div class="phase">
+                    <div class="phase-header">
+                        <div>
+                            <h3>Spring 2027: Foundational Voices & New Beginnings</h3>
+                            <span class="phase-date">Mar - May 2027</span>
+                        </div>
+                        <button class="toggle-theme-btn" aria-expanded="false" aria-controls="thematic-trace-s-2027">Show Themes ✨</button>
+                    </div>
+                    <div id="thematic-trace-s-2027" class="thematic-trace">
+                        <h4>Thematic Tracing:</h4>
+                        <p><strong>Seminal Afrofuturism, Genre-Defining Epics, and Unique Cultural Futurisms:</strong></p>
+                        <ul>
+                            <li>Earthseed Series: Foundational Afrofuturist works by Octavia E. Butler exploring societal rebuilding, faith, and resilience in a dystopian climate-changed future.</li>
+                            <li>The Broken Earth Trilogy: Monumental sociopolitical sci-fi/fantasy by N.K. Jemisin, dealing with climate cataclysm, oppression, power, and survival.</li>
+                            <li>Kindred: A profound Afrofuturist classic by Butler bridging past and present through the trauma of slavery.</li>
+                            <li>The Lesson: Caribbean sci-fi exploring first contact, colonialism, and reconciliation.</li>
+                            <li>Noor: Africanfuturist work by Nnedi Okorafor examining cyberpunk themes, corporate greed, and bodily autonomy.</li>
+                            <li>Xenogenesis/Lilith's Brood Trilogy: Deeply philosophical Afrofuturism by Butler questioning humanity, consent, and genetic engineering.</li>
+                        </ul>
+                        <p><em>Significance:</em> This spring phase is anchored by foundational works from Octavia E. Butler and N.K. Jemisin, alongside innovative futurisms from other key voices, aligning with themes of transformation, resilience, and new beginnings.</p>
+                    </div>
+                    <article class="event-block">
+                        <span class="event-block-date">March 1 - March 14, 2027 (2 weeks): SERIES BINGE</span>
+                        <h4>Parable of the Sower (Earthseed #1) by Octavia E. Butler (12h 2m). Narrated by Lynne Thigpen.</h4>
+                        <h4>Parable of the Talents (Earthseed #2) by Octavia E. Butler (approx. 14-15h). Narrated by Patricia Floyd / Robin Miles.</h4>
+                        <div class="event-details">
+                            <p><strong>Total Series Load:</strong> ~26-27 hours.</p>
+                            <p><strong>Weekly Load:</strong> ~13-14 h/week.</p>
+                            <p><strong>Theme & Concept:</strong> Foundational Afrofuturism, Dystopian, Climate Fiction, Societal Rebuilding, Faith. Spring signifies new beginnings and growth, fitting for Earthseed's themes of creating a new way forward.</p>
+                            <p><strong>Why this Season:</strong> A powerful and prescient series to start the extended plan, focusing on resilience and the seeds of change.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">March 15 - April 4, 2027 (3 weeks): SERIES BINGE</span>
+                        <h4>The Fifth Season (The Broken Earth #1) by N. K. Jemisin (15h 27m). Narrated by Robin Miles.</h4>
+                        <h4>The Obelisk Gate (The Broken Earth #2) by N. K. Jemisin (approx. 14h). Narrated by Robin Miles.</h4>
+                        <h4>The Stone Sky (The Broken Earth #3) by N. K. Jemisin (approx. 14h). Narrated by Robin Miles.</h4>
+                        <div class="event-details">
+                            <p><strong>Total Series Load:</strong> ~43.5 hours.</p>
+                            <p><strong>Weekly Load:</strong> ~14.5 h/week.</p>
+                            <p><strong>Theme & Concept:</strong> Monumental Sociopolitical Sci-Fi/Fantasy, Climate Cataclysm, Oppression, Power, Motherhood, Survival. Themes of breaking old worlds and forging new ones resonate with spring's transformative energy.</p>
+                            <p><strong>Why this Season:</strong> A critically acclaimed, triple Hugo-winning trilogy that reshapes genre conventions.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">April 5 - April 11, 2027 (1 week): Standalone Afrofuturist Classic</span>
+                        <h4>Kindred by Octavia E. Butler (10h 54m). Narrated by Kim Staunton.</h4>
+                        <div class="event-details">
+                            <p><strong>Weekly Load:</strong> ~11h.</p>
+                            <p><strong>Theme & Concept:</strong> Afrofuturism, Historical Fiction, Horror, Trauma of Slavery, Intergenerational Connection. A profound and impactful standalone that bridges past and present.</p>
+                            <p><strong>Why this Season:</strong> Offers a moment of deep historical reflection amidst future-facing narratives.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">April 12 - April 18, 2027 (1 week): Caribbean Sci-Fi</span>
+                        <h4>The Lesson <span class="audio-tag tag-mc">(MC)</span> by Cadwell Turnbull (8h 37m). Narrated by Janina Edwards & Ron Butler.</h4>
+                        <div class="event-details">
+                            <p><strong>Weekly Load:</strong> ~8.5h (can be combined with shorts or start next book).</p>
+                            <p><strong>Theme & Concept:</strong> First Contact, Sociopolitical Sci-Fi, Colonialism, Grief, Reconciliation (U.S. Virgin Islands setting).</p>
+                            <p><strong>Why this Season:</strong> Introduces a distinct cultural voice and perspective on alien encounters.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">April 19 - April 25, 2027 (1 week): Africanfuturist Innovation</span>
+                        <h4>Noor by Nnedi Okorafor (7h 11m). Narrated by Délé Ogundiran.</h4>
+                        <div class="event-details">
+                            <p><strong>Weekly Load:</strong> ~7h (can be combined with shorts or start next book).</p>
+                            <p><strong>Theme & Concept:</strong> Africanfuturism, Cyberpunk, Solarpunk elements, Corporate Greed, Bodily Autonomy, Disability.</p>
+                            <p><strong>Why this Season:</strong> A vibrant, fast-paced look at technological integration and identity in a future Africa.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">April 26 - May 16, 2027 (3 weeks): SERIES BINGE</span>
+                        <h4>Dawn (Xenogenesis/Lilith's Brood #1) by Octavia E. Butler (8h 26m). Narrated by Julienne Irons / Robin Miles.</h4>
+                        <h4>Adulthood Rites (Xenogenesis/Lilith's Brood #2) by Octavia E. Butler (approx. 9.5h). Narrated by Robin Miles.</h4>
+                        <h4>Imago (Xenogenesis/Lilith's Brood #3) by Octavia E. Butler (approx. 7.5h). Narrated by Robin Miles.</h4>
+                        <div class="event-details">
+                            <p><strong>Total Series Load:</strong> ~25.5 hours.</p>
+                            <p><strong>Weekly Load:</strong> ~8.5 h/week.</p>
+                            <p><strong>Theme & Concept:</strong> Profound Afrofuturism, First Contact, Genetic Engineering, Consent, Nature of Humanity, Hybridity. Explores complex questions of survival and transformation.</p>
+                            <p><strong>Why this Season:</strong> A deeply philosophical Butler series that challenges human nature, fitting for spring's themes of evolution and change.</p>
+                        </div>
+                    </article>
+                </div>
+                <div class="phase">
+                    <div class="phase-header">
+                        <div>
+                            <h3>Summer 2027: Alien Encounters, Mythic Quests, & Dystopian Realities</h3>
+                            <span class="phase-date">May - Aug 2027</span>
+                        </div>
+                        <button class="toggle-theme-btn" aria-expanded="false" aria-controls="thematic-trace-su-2027">Show Themes ✨</button>
+                    </div>
+                    <div id="thematic-trace-su-2027" class="thematic-trace">
+                        <h4>Thematic Tracing:</h4>
+                        <p><strong>Complex Alien Worlds, Mythological Fantasies, and Indigenous Dystopias:</strong></p>
+                        <ul>
+                            <li>Wormwood Trilogy: Afrofuturist biopunk series with alien invasion, telepathy, and unique world-building in Nigeria.</li>
+                            <li>A Master of Djinn: Steampunk Afrofuturist mystery set in an alternate 1912 Cairo, rich with magic and djinn.</li>
+                            <li>Gods of Jade and Shadow: Historical fantasy drawing on Mayan mythology in Jazz Age Mexico.</li>
+                            <li>The Marrow Thieves Series: Poignant Indigenous dystopian YA exploring cultural survival and resilience.</li>
+                            <li>Moon of the Crusted Snow Series: Indigenous post-apocalyptic narrative focusing on community and return to traditional ways.</li>
+                            <li>Riot Baby & Death of the Author: Afrofuturist satire/social commentary and a major Okorafor work on art and identity.</li>
+                            <li>House of Bone and Rain & The Haunting of Room 904: Latinx and Indigenous horror.</li>
+                        </ul>
+                        <p><em>Significance:</em> Summer offers immersive dives into complex alien worlds, captivating mythological quests, and powerful dystopian narratives from Indigenous and Afrofuturist perspectives, balanced with sharp social commentary and chilling horror.</p>
+                    </div>
+                    <article class="event-block">
+                        <span class="event-block-date">May 17 - June 6, 2027 (3 weeks): SERIES BINGE</span>
+                        <h4>Rosewater (Wormwood Trilogy #1) by Tade Thompson (13h 37m). Narrated by Bayo Gbadamosi.</h4>
+                        <h4>The Rosewater Insurrection (Wormwood Trilogy #2) by Tade Thompson (approx. 13h). Narrated by Bayo Gbadamosi.</h4>
+                        <h4>The Rosewater Redemption (Wormwood Trilogy #3) by Tade Thompson (approx. 13h). Narrated by Bayo Gbadamosi.</h4>
+                        <div class="event-details">
+                            <p><strong>Total Series Load:</strong> ~39.5 hours.</p>
+                            <p><strong>Weekly Load:</strong> ~13 h/week.</p>
+                            <p><strong>Theme & Concept:</strong> Afrofuturism, Biopunk, Alien Invasion, Mystery, Telepathy, Nigerian setting. Immersive and unique world-building.</p>
+                            <p><strong>Why this Season:</strong> A complex and engaging sci-fi trilogy for summer deep dives.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">June 7 - June 13, 2027 (1 week): Steampunk Afrofuturist Mystery</span>
+                        <h4>A Master of Djinn (Dead Djinn Universe) by P. Djèlí Clark (15h 37m). Narrated by Suehyla El-Attar.</h4>
+                        <div class="event-details">
+                            <p><strong>Weekly Load:</strong> ~15.5h.</p>
+                            <p><strong>Theme & Concept:</strong> Historical Fantasy, Steampunk, Afrofuturism (alternate 1912 Cairo), Mystery, Djinn, Magic. Richly imagined and atmospheric.</p>
+                            <p><strong>Why this Season:</strong> A fantastic, award-winning novel offering a unique blend of genres.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">June 14 - June 20, 2027 (1 week): Mayan Myth & Jazz Age Fantasy</span>
+                        <h4>Gods of Jade and Shadow by Silvia Moreno-Garcia (11h 4m). Narrated by Yetta Gottesman.</h4>
+                        <div class="event-details">
+                            <p><strong>Weekly Load:</strong> ~11h.</p>
+                            <p><strong>Theme & Concept:</strong> Historical Fantasy, Mayan Mythology, Jazz Age Mexico, Quest, Romance. A slightly lighter, adventurous tone.</p>
+                            <p><strong>Why this Season:</strong> A captivating mythological journey perfect for summer escapism.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">June 21 - July 4, 2027 (2 weeks): SERIES BINGE (Potential)</span>
+                        <h4>The Marrow Thieves by Cherie Dimaline (7h 7m). Narrated by Meegwun Fairbrother.</h4>
+                        <h4>Hunting by Stars (The Marrow Thieves #2) by Cherie Dimaline (approx. 10h). Narrated by Meegwun Fairbrother.</h4>
+                        <div class="event-details">
+                            <p><strong>Total Series Load:</strong> ~17 hours.</p>
+                            <p><strong>Weekly Load:</strong> ~8.5 h/week.</p>
+                            <p><strong>Theme & Concept:</strong> Indigenous Dystopian, Cultural Survival, Loss of Dreams, Resilience, Found Family. Poignant and powerful YA.</p>
+                            <p><strong>Why this Season:</strong> Important themes of survival and community.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">July 5 - July 18, 2027 (2 weeks): SERIES BINGE (Potential)</span>
+                        <h4>Moon of the Crusted Snow by Waubgeshig Rice (6h 46m). Narrated by Billy Merasty.</h4>
+                        <h4>Moon of the Turning Leaves (Moon of the Crusted Snow #2) by Waubgeshig Rice (approx. 8h). Narrated by Billy Merasty.</h4>
+                        <div class="event-details">
+                            <p><strong>Total Series Load:</strong> ~15 hours.</p>
+                            <p><strong>Weekly Load:</strong> ~7.5 h/week.</p>
+                            <p><strong>Theme & Concept:</strong> Indigenous Post-Apocalyptic, Community, Resilience, Return to Traditional Ways. Quietly eerie and hopeful.</p>
+                            <p><strong>Why this Season:</strong> Reflective and suspenseful, exploring adaptation in a changed world.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">July 19 - August 1, 2027 (2 weeks): Afrofuturist Satire & Social Commentary</span>
+                        <h4>Riot Baby <span class="audio-tag tag-pc">(PC)</span> by Tochi Onyebuchi (3h 46m). Narrated by Tochi Onyebuchi.</h4>
+                        <h4>Death of the Author <span class="audio-tag tag-mc">(MC)</span> by Nnedi Okorafor (16h 12m). Narrated by Liz Femi, Anthony Oseyemi, & others.</h4>
+                        <div class="event-details">
+                            <p><strong>Weekly Load:</strong> ~10h/week.</p>
+                            <p><strong>Theme & Concept:</strong> Riot Baby: Fiery Afrofuturist novella on Black anger, love, systemic injustice. Potent and concise. Death of the Author: Afrofuturism, Sci-Fi, Metafiction, Art, Identity, Control. A major work from Okorafor.</p>
+                            <p><strong>Why this Season:</strong> Riot Baby as a sharp palate cleanser, followed by a significant Okorafor novel exploring complex themes.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">August 2 - August 22, 2027 (3 weeks): Latinx & Indigenous Horror</span>
+                        <h4>House of Bone and Rain <span class="audio-tag tag-mc">(MC)</span> by Gabino Iglesias (10h 56m). Narrated by Jean-Marc Berne, Daya Mendez.</h4>
+                        <h4>The Haunting of Room 904 by Erika T. Wurth (9h 48m). Narrated by Ina Barrón.</h4>
+                        <div class="event-details">
+                            <p><strong>Weekly Load:</strong> ~7h/week.</p>
+                            <p><strong>Theme & Concept:</strong> House of Bone and Rain: Barrio Noir, Supernatural Horror, Crime Fiction, Vengeance. The Haunting of Room 904: Paranormal Horror, Indigenous Author, Haunted Hotel.</p>
+                            <p><strong>Why this Season:</strong> A strong dose of horror from Latinx and Indigenous voices as summer wanes.</p>
+                        </div>
+                    </article>
+                </div>
+                <div class="phase">
+                    <div class="phase-header">
+                        <div>
+                            <h3>Autumn 2027: Societal Explorations & Dark Fantasies</h3>
+                            <span class="phase-date">Aug - Nov 2027</span>
+                        </div>
+                        <button class="toggle-theme-btn" aria-expanded="false" aria-controls="thematic-trace-a-2027">Show Themes ✨</button>
+                    </div>
+                    <div id="thematic-trace-a-2027" class="thematic-trace">
+                        <h4>Thematic Tracing:</h4>
+                        <p><strong>Climate Futures, Gothic Commentaries, Multiverses, and Diverse Fantasies:</strong></p>
+                        <ul>
+                            <li>New York 2140: Expansive climate fiction exploring adaptation and community in a future NYC.</li>
+                            <li>Sorrowland: Intense Gothic thriller/horror/sci-fi commenting on racism and medical experimentation.</li>
+                            <li>The Hacienda: Atmospheric Latinx Gothic horror set in post-colonial Mexico.</li>
+                            <li>The Space Between Worlds: Multiverse sci-fi examining class inequality, identity, and fate.</li>
+                            <li>Midnight Robber: Vibrant Afro-Caribbean science fantasy exploring carnival, exile, and resilience.</li>
+                            <li>Future Home of the Living God: Indigenous literary dystopia on reversing evolution and motherhood.</li>
+                            <li>Africa Risen: Anthology showcasing contemporary African and Afro-Diasporic speculative fiction.</li>
+                            <li>The Saint of Bright Doors: Nebula Award-winning decolonial fantasy exploring identity and power.</li>
+                            <li>rekt: Unsettling near-future Latinx horror.</li>
+                            <li>The Butcher of the Forest: Concise, atmospheric dark fantasy novella.</li>
+                        </ul>
+                        <p><em>Significance:</em> Autumn offers a rich tapestry of societal explorations, from climate futures to Gothic commentaries and multiverse mysteries, alongside diverse fantasies and horror, fitting the reflective and darker tones of the season.</p>
+                    </div>
+                    <article class="event-block">
+                        <span class="event-block-date">August 23 - September 5, 2027 (2 weeks): Climate Fiction & Sociopolitical Sci-Fi</span>
+                        <h4>New York 2140 <span class="audio-tag tag-mc">(MC)</span> by Kim Stanley Robinson (22h 34m). Narrated by Full Cast.</h4>
+                        <div class="event-details">
+                            <p><strong>Weekly Load:</strong> ~11h/week.</p>
+                            <p><strong>Theme & Concept:</strong> Climate Fiction, Solarpunk elements, Sociopolitical Sci-Fi, Future NYC transformed by sea-level rise, Adaptation, Community.</p>
+                            <p><strong>Why this Season:</strong> An expansive look at a future shaped by climate change, fitting for autumn's reflective mood.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">September 6 - September 12, 2027 (1 week): Gothic & Social Commentary</span>
+                        <h4>Sorrowland by Rivers Solomon (12h 2m). Narrated by Karen Chilton.</h4>
+                        <div class="event-details">
+                            <p><strong>Weekly Load:</strong> ~12h.</p>
+                            <p><strong>Theme & Concept:</strong> Gothic Thriller, Horror, Sci-Fi, Social Commentary on Racism, Medical Experimentation, Bodily Transformation, Queer & Intersex Identity. Intense and genre-bending.</p>
+                            <p><strong>Why this Season:</strong> A powerful, unsettling novel for deeper autumn contemplation.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">September 13 - September 19, 2027 (1 week): Latinx Gothic Horror</span>
+                        <h4>The Hacienda <span class="audio-tag tag-mc">(MC)</span> by Isabel Cañas (11h 7m). Narrated by Victoria Villarreal & Lee Osorio.</h4>
+                        <div class="event-details">
+                            <p><strong>Weekly Load:</strong> ~11h.</p>
+                            <p><strong>Theme & Concept:</strong> Gothic Horror, Post-Colonial Mexico, Haunted Estate, Supernatural Terror, Faith. Atmospheric and chilling.</p>
+                            <p><strong>Why this Season:</strong> Perfect for the spooky season build-up.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">September 20 - September 26, 2027 (1 week): Multiverse & Identity</span>
+                        <h4>The Space Between Worlds by Micaiah Johnson (11h 46m). Narrated by Nicole Lewis.</h4>
+                        <div class="event-details">
+                            <p><strong>Weekly Load:</strong> ~12h.</p>
+                            <p><strong>Theme & Concept:</strong> Multiverse Sci-Fi, Class Inequality, Identity, Fate, Queer Black Heroine. Thought-provoking and suspenseful.</p>
+                            <p><strong>Why this Season:</strong> A cerebral sci-fi mystery.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">September 27 - October 3, 2027 (1 week): Afro-Caribbean Sci-Fantasy</span>
+                        <h4>Midnight Robber by Nalo Hopkinson (12h 45m). Narrated by Robin Miles.</h4>
+                        <div class="event-details">
+                            <p><strong>Weekly Load:</strong> ~13h.</p>
+                            <p><strong>Theme & Concept:</strong> Afro-Caribbean Science Fantasy, Carnival, Exile, Resilience, Justice, Identity, Creole dialect. Vibrant and unique.</p>
+                            <p><strong>Why this Season:</strong> A culturally rich and imaginative standalone.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">October 4 - October 10, 2027 (1 week): Indigenous Literary Dystopia</span>
+                        <h4>Future Home of the Living God by Louise Erdrich (10h 44m). Narrated by Louise Erdrich.</h4>
+                        <div class="event-details">
+                            <p><strong>Weekly Load:</strong> ~11h.</p>
+                            <p><strong>Theme & Concept:</strong> Indigenous Speculative Dystopia, Reversing Evolution, Motherhood, Identity, Resilience. Literary and profound.</p>
+                            <p><strong>Why this Season:</strong> A thought-provoking work from a literary icon.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">October 11 - October 24, 2027 (2 weeks): Voices from Africa & Diaspora <span class="audio-tag tag-mc">(MC)</span><span class="audio-tag tag-pc">(PC)</span></span>
+                        <h4>Africa Risen: A New Era of Speculative Fiction (Anthology) Ed. Sheree Renée Thomas, Oghenechovwe Donald Ekpeki, Zelda Knight (17h 41m). Narrated by Full Cast.</h4>
+                        <div class="event-details">
+                            <p><strong>Weekly Load:</strong> ~9h/week.</p>
+                            <p><strong>Theme & Concept:</strong> Afrofuturism, Africanfuturism, Fantasy, Sci-Fi. Diverse original stories showcasing contemporary African and Afro-Diasporic speculative fiction.</p>
+                            <p><strong>Why this Season:</strong> A vibrant multicast anthology offering a wide range of stories.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">October 25 - October 31, 2027 (1 week): Decolonial Fantasy</span>
+                        <h4>The Saint of Bright Doors by Vajra Chandrasekera (12h 20m). Narrated by Sid Sagar.</h4>
+                        <div class="event-details">
+                            <p><strong>Weekly Load:</strong> ~12h.</p>
+                            <p><strong>Theme & Concept:</strong> Fantasy, Sociopolitical, Magical Realism, LGBTQ+ themes, Decolonial thought, Identity, Power. Nebula Award winner.</p>
+                            <p><strong>Why this Season:</strong> A complex, revelatory, and critically acclaimed work.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">November 1 - November 7, 2027 (1 week): Near-Future Latinx Horror</span>
+                        <h4>rekt by Alex Gonzalez (10h 34m). Narrated by Robb Moreira.</h4>
+                        <div class="event-details">
+                            <p><strong>Weekly Load:</strong> ~10.5h.</p>
+                            <p><strong>Theme & Concept:</strong> Horror, Near-Future, Psychological Thriller, Toxic Masculinity, Dark Web. Unsettling.</p>
+                            <p><strong>Why this Season:</strong> A disturbing contemporary horror for the darker days.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">November 8 - November 14, 2027 (1 week): Dark Fantasy Novella <span class="audio-tag tag-pc">(PC)</span></span>
+                        <h4>The Butcher of the Forest by Premee Mohamed (Novella, approx. 4-5h). Narrator TBD.</h4>
+                        <div class="event-details">
+                            <p><strong>Weekly Load:</strong> Flexible.</p>
+                            <p><strong>Theme & Concept:</strong> Dark Fantasy, Horror, Fairy Tale Retelling, War, Grief. Chilling and thought-provoking.</p>
+                            <p><strong>Why this Season:</strong> A concise, atmospheric dark fantasy.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="year-2028" aria-labelledby="heading-2028">
+            <div class="container">
+                <h2 id="heading-2028">Culmination of the Journey: 2027-2028</h2>
+                <div class="phase">
+                    <div class="phase-header">
+                        <div>
+                            <h3>Winter 2027/2028: Reflections, Anthologies, & Endings</h3>
+                            <span class="phase-date">Nov 2027 - Feb 2028</span>
+                        </div>
+                        <button class="toggle-theme-btn" aria-expanded="false" aria-controls="thematic-trace-w-2728">Show Themes ✨</button>
+                    </div>
+                    <div id="thematic-trace-w-2728" class="thematic-trace">
+                        <h4>Thematic Tracing:</h4>
+                        <p><strong>Short Fiction, Reflection, and Flexible Exploration:</strong></p>
+                        <ul>
+                            <li>How Long ’Til Black Future Month?: Acclaimed short story collection by N.K. Jemisin, spanning fantasy, sci-fi, and horror, exploring Black and marginalized experiences.</li>
+                            <li>Buffer Period & Flexibility: Allows for catching up, revisiting favorites, exploring newly released sequels (e.g., The Sixth World #3, Dark Star Trilogy #3), or discovering new titles.</li>
+                        </ul>
+                        <p><em>Significance:</em> This final phase offers a reflective culmination with a celebrated short story collection and provides flexibility to tailor the end of the journey to personal preferences and new releases, ensuring a satisfying conclusion to the multi-year odyssey.</p>
+                    </div>
+                    <article class="event-block">
+                        <span class="event-block-date">November 15 - November 28, 2027 (2 weeks): Jemisin Short Fiction <span class="audio-tag tag-mc">(MC)</span><span class="audio-tag tag-pc">(PC)</span></span>
+                        <h4>How Long ’Til Black Future Month? by N. K. Jemisin (14h 10m). Narrated by Shayna Small, Gail Nelson-Holgate, & others.</h4>
+                        <div class="event-details">
+                            <p><strong>Weekly Load:</strong> ~7h/week.</p>
+                            <p><strong>Theme & Concept:</strong> Acclaimed short story collection spanning fantasy, sci-fi, horror. Explores Black and marginalized experiences with Jemisin's signature insight.</p>
+                            <p><strong>Why this Season:</strong> A fantastic collection to sample various speculative scenarios as the year winds down.</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">November 29 - December 31, 2027 (Approx. 5 weeks): Buffer & Anticipation</span>
+                        <div class="event-details">
+                             <p><strong>Theme & Concept:</strong> Buffer Time / Catch-Up / Holiday Listening / Re-listens / Anticipated New Releases for late 2027/early 2028.</p>
+                             <p><strong>Why this Season:</strong> This period allows flexibility. You might revisit favorites, catch up if any series ran longer, or pick up newly released books by favorite authors that fit your themes. Possible focus: Check for sequels to series started earlier (e.g., The Sixth World #3, Dark Star Trilogy #3, The Chronicles of Ghadid sequels if you opted for the series binge).</p>
+                        </div>
+                    </article>
+                    <article class="event-block">
+                        <span class="event-block-date">January 2028 & February 2028: Flexible Listening & Series Completions</span>
+                         <div class="event-details">
+                            <p><strong>Theme & Concept:</strong> Continue with any outstanding series sequels that may have released. Explore new standalone titles that have garnered attention in your preferred genres (Afrofuturism, Solarpunk, diverse Horror, Sociopolitical SF). Revisit an anthology for shorter listening experiences.</p>
+                            <p><strong>Example (if Sixth World #3 is out):</strong> Black Sun Rising (The Sixth World #3) by Rebecca Roanhorse (approx 10-12h). (1 week)</p>
+                            <p><strong>Example (if Dark Star #3 is out):</strong> White Wing, Dark Star (Dark Star Trilogy #3) by Marlon James (approx 24-26h). (1.5-2 weeks)</p>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="phase"> <div class="phase-header">
+                        <div><h3>Note on Timeline & Flexibility</h3></div>
+                    </div>
+                    <p>This extended plan now robustly fills your listening schedule through Winter 2027/2028. The "series binge" rule means some periods are very dedicated to a single author or world. The later stages, especially into late 2027 and early 2028, have some built-in flexibility to accommodate the actual release dates of anticipated sequels or new discoveries. Always feel free to adjust based on your current listening mood and energy levels!</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>Enjoy your journey. May it inspire wonder, provoke thoughtful reflection, and illuminate the boundless magic of storytelling.</p>
+        </div>
+    </footer>
+
+    <button id="back-to-top" aria-label="Back to top" title="Back to top">↑</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Skip Link Focus
+            const skipLink = document.querySelector('.skip-link');
+            const mainContent = document.getElementById('main-content');
+            if (skipLink && mainContent) {
+                skipLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    mainContent.setAttribute('tabindex', '-1'); // Make it focusable
+                    mainContent.focus();
+                    // Optional: Remove tabindex after focus if it causes issues with page flow
+                    // setTimeout(() => { mainContent.removeAttribute('tabindex'); }, 100);
+                });
+            }
+
+            // Thematic Trace Toggle
+            const toggleButtons = document.querySelectorAll('.toggle-theme-btn');
+            toggleButtons.forEach(button => {
+                const controlledId = button.getAttribute('aria-controls');
+                const traceContent = document.getElementById(controlledId);
+
+                if (traceContent) {
+                    button.addEventListener('click', function() {
+                        const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                        traceContent.style.display = isExpanded ? 'none' : 'block';
+                        this.setAttribute('aria-expanded', !isExpanded);
+                        this.textContent = isExpanded ? 'Show Themes ✨' : 'Hide Themes 🌟';
+                    });
+                }
+            });
+
+            // Dropdown Menu Accessibility (Ensuring it can be tabbed through and Escape closes)
+            const dropdowns = document.querySelectorAll('.dropdown');
+            dropdowns.forEach(dropdown => {
+                const toggleButton = dropdown.querySelector('.dropbtn');
+                const dropdownContent = dropdown.querySelector('.dropdown-content');
+                // const focusableElements = dropdownContent.querySelectorAll('a'); // Not directly used in this simplified version
+
+                if (toggleButton && dropdownContent) { // Ensure elements exist
+                    toggleButton.addEventListener('click', function() {
+                        const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                        this.setAttribute('aria-expanded', !isExpanded);
+                        dropdownContent.style.display = !isExpanded ? 'block' : 'none';
+                    });
+                
+                    // Close dropdown if clicking outside
+                    document.addEventListener('click', function(event) {
+                        if (!dropdown.contains(event.target)) {
+                            toggleButton.setAttribute('aria-expanded', 'false');
+                            dropdownContent.style.display = 'none';
+                        }
+                    });
+
+                    // Keyboard navigation for dropdown
+                    dropdown.addEventListener('keydown', function(e) {
+                        if (e.key === 'Escape') {
+                            toggleButton.setAttribute('aria-expanded', 'false');
+                            dropdownContent.style.display = 'none';
+                            toggleButton.focus();
+                        }
+                    });
+                }
+            });
+
+
+            // Back to Top Button
+            const backToTopButton = document.getElementById('back-to-top');
+            if (backToTopButton) {
+                window.addEventListener('scroll', () => {
+                    if (window.pageYOffset > 300) { // Show after 300px scroll
+                        backToTopButton.classList.add('visible');
+                    } else {
+                        backToTopButton.classList.remove('visible');
+                    }
+                });
+                backToTopButton.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+            
+            // Smooth scrolling for nav links (already handled by CSS html scroll-behavior: smooth for simple anchors)
+            // The JS part can be more robust if offset calculation for sticky nav is critical across all browsers/scenarios.
+            // Current CSS 'scroll-padding-top' on <html> or body can also handle sticky nav offset globally.
+            // Let's add `scroll-padding-top` for robust offset for sticky nav.
+            const navElement = document.getElementById('main-navigation');
+            if (navElement) {
+                const navHeight = navElement.offsetHeight || 60;
+                document.documentElement.style.scrollPaddingTop = navHeight + 'px';
+            }
+
+
+            // Placeholder for filling all the content.
+            // For brevity in this example, many "event-block" and "thematic-trace" divs are empty 
+            // or have placeholder comments like "/* ... Theme content ... */". 
+            // In a real implementation, all the content from your documents would be filled in.
+            // I've structured the first few phases of 2025 more completely as a template.
+            // Ensure all aria-controls IDs are unique and match their respective div IDs.
+            console.log("Sonic Journey Page Initialized. All placeholder content sections should now be populated based on the provided document.");
+
+        });
+    </script>
+
+</body>
+</html>
